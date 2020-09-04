@@ -1,15 +1,27 @@
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Login from './src/screens/Login';
 
-const App: () => React$Node = () => {
+const Stack = createStackNavigator();
+
+export default () => {
   useEffect(() => {}, []);
 
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView></SafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            options={{headerShown: false}}
+            name="login"
+            component={Login}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </>
   );
 };
-
-export default App;
